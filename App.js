@@ -8,6 +8,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './screens/sessions/LoginScreen';
 import oldScreen from './App3';
+import RegisterScreen from './screens/sessions/RegisterScreen'
 
 const Stack = createStackNavigator();
 
@@ -35,10 +36,24 @@ export default function App() {
           screenOptions={{}}
           >
             <Stack.Screen
-            name="signIn"
+            name="LoginScreen"
             component={LoginScreen}
             options={{
-              title: 'Sign In',
+              title: 'LoginScreen',
+              cardStyleInterpolator: forFade,
+              headerStyle: {
+                backgroundColor: '#29434e',
+                borderBottomColor: '#29434e',
+                
+              },
+              headerTintColor: '#fff'
+            }}/>
+            <Stack.Screen
+            name="RegisterScreen"
+            component={RegisterScreen}
+            options={{
+              title: 'RegisterScreen',
+              cardStyleInterpolator: forFade,
               headerStyle: {
                 backgroundColor: '#29434e',
                 borderBottomColor: '#29434e',
@@ -53,11 +68,11 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+
+const forFade = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+    backgroundColor: 'transparent',
   },
 });
