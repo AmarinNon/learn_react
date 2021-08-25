@@ -1,19 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { set } from 'lodash';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { db } from './firebase';
 import { auth } from './firebase'; 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './screens/sessions/LoginScreen';
-import oldScreen from './App3';
 import RegisterScreen from './screens/sessions/RegisterScreen'
 
 const Stack = createStackNavigator();
 
 export default function App() {
   const [signedIn, setsignedIn] = useState(false);
+
+  const forFade = ({ current }) => ({
+    cardStyle: {
+      opacity: current.progress,
+      backgroundColor: 'transparent',
+    },
+  });
   
   auth.onAuthStateChanged((use) => {
     if (user) {
@@ -67,12 +70,3 @@ export default function App() {
       </NavigationContainer>
   );
 }
-
-
-
-const forFade = ({ current }) => ({
-  cardStyle: {
-    opacity: current.progress,
-    backgroundColor: 'transparent',
-  },
-});
