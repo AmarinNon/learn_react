@@ -79,7 +79,7 @@ const LoginScreen = ({ navigation }) => {
         style={styles.switchBtn}
         icon="account-plus"
         compact
-        onPress={() => navigation.navigate('register')}>Register Account
+        onPress={() => navigation.navigate('RegisterScreen')}>Register Account
       </Button>
       <p>Made by Amarin</p>
     </View>
