@@ -13,7 +13,11 @@ const RegisterScreen = ({ navigation }) => {
   const password = useRef({});
   password.current = watch('password', '');
   const onSubmit = (formData) => {
-    console.log(formData);
+    const { email, password } = data;
+    auth
+      .createUserWithEmailAndPassword(
+        email.trim().toLowerCase(), password
+      );
   };
   return (
     <View style={styles.authFormContainer}>

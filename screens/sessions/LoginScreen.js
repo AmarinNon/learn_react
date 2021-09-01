@@ -7,7 +7,11 @@ const LoginScreen = ({ navigation }) => {
   
   const { control, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const { email, password } = data;
+    auth
+      .signInWithEmailAndPassword(
+        email.trim().toLowerCase(), password
+      );
   }
   return (
     <View style={styles.authFormContainer}>
@@ -19,8 +23,9 @@ const LoginScreen = ({ navigation }) => {
             label="Email"
             mode="outlined"
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
             value={value}
+            onChangeText={(value) => onChange(value)}
+            
           />
         )}
         name="email"
@@ -39,8 +44,9 @@ const LoginScreen = ({ navigation }) => {
             mode="outlined"
             secureTextEntry
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
             value={value}
+            onChangeText={(value) => onChange(value)}
+            
           />
         )}
         name="password"
